@@ -1,0 +1,49 @@
+/*
+ * Overrides for the MDBT50Q-CX-40 USB-C dongle.
+ *
+ * The CX-40 uses the Nordic nRF5 SDK DFU bootloader (NOT MCUboot).
+ * Flash layout:
+ *   0x00000000 - 0x00000FFF : Nordic MBR (4 KB)
+ *   0x00001000 - 0x000EBFFF : Application (starts at 0x1000, NOT 0xC000)
+ *   0x000EC000 - 0x000F3FFF : NVS storage (32 KB)
+ *   0x000F4000 - 0x000FDFFF : Nordic DFU Bootloader (40 KB)
+ *   0x000FE000 - 0x000FFFFF : Bootloader settings (8 KB)
+ *
+ * GPIO differences from DB-40 dev board:
+ *   LED:    P0.06 (DB-40 uses P0.13)
+ *   Button: P1.06 (DB-40 uses P0.18)
+ */
+
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+    chosen {
+        zephyr,code-partition = &slot0_partition;
+    };
+
+    /* Override LEDs for CX-40 dongle */
+    leds {
+        compatible = "gpio-leds";
+        led0: led_0 {
+            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+            label = "Blue LED";
+        };
+    };
+
+    /* Override button for CX-40 dongle */
+    buttons {
+        compatible = "gpio-keys";
+        button0: button_0 {
+            gpios = <&gpio1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Push button switch";
+        };
+    };
+};
+
+&slot0_partition {
+    reg = <0x00001000 0x000EB000>;
+};
+
+&storage_partition {
+    reg = <0x000EC000 0x00008000>;
+};
