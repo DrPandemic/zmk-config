@@ -6,7 +6,15 @@
     chosen {
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
+        zmk,battery-reporting = &battery_reporting;
         /delete-property/ zmk,matrix-transform;
+    };
+
+    battery_reporting: battery_reporting {
+        compatible = "zmk,battery-reporting";
+        central { hidden; };
+        left { };
+        right { };
     };
 
     mock_kscan: kscan {
