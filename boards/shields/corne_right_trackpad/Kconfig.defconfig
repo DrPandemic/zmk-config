@@ -1,0 +1,13 @@
+if SHIELD_CORNE_RIGHT_TRACKPAD
+
+config ZMK_KEYBOARD_NAME
+    default "Corne Trackpad"
+
+# The Azoteq TPS43 trackpad is part of this hardware
+config ZMK_POINTING
+    default y
+
+config I2C
+    default y
+
+endif # SHIELD_CORNE_RIGHT_TRACKPAD

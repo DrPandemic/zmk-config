@@ -4,10 +4,15 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: genteure
       url-base: https://github.com/Genteure
+    - name: aym1607
+      url-base: https://github.com/AYM1607
   projects:
     - name: zmk
       remote: genteure
       revision: ce880fa6e41dd587c1a1feb2d85d07af18a1e017
       import: app/west.yml
+    - name: zmk-driver-azoteq-iqs5xx
+      remote: aym1607
+      revision: b994f2f56a0b7e864caa32f748d63c6c9dd259a3
   self:
     path: config
