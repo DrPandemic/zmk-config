@@ -24,16 +24,12 @@ include:
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
     artifact-name: mdbt50q_dongle
-  - board: raytac_mdbt50q_db_40_nrf52840
-    shield: corne_dongle
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DSNIPPET="studio-rpc-usb-uart;zmk-usb-logging"
-    artifact-name: mdbt50q_dongle_debug
   - board: nice_nano_v2
     shield: corne_left
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: corne_left
   - board: nice_nano_v2
-    shield: corne_right
+    shield: corne_right_trackpad
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: corne_right
 
@@ -43,17 +39,3 @@ include:
   - board: nice_nano_v2
     shield: settings_reset
     artifact-name: nano_reset_settings
-
-  - board: nice_nano_v2
-    shield: corne_left
-    cmake-args: -DCONFIG_ZMK_SPLIT=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_USB=y
-    artifact-name: corne_left_usb
-  - board: nice_nano_v2
-    shield: corne_right
-    cmake-args: -DCONFIG_ZMK_SPLIT=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_USB=y
-    artifact-name: corne_right_usb
-  - board: nice_nano_v2
-    shield: corne_right_trackpad
-    snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_ZMK_SPLIT=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_USB=y -DCONFIG_SHELL=y -DCONFIG_I2C_SHELL=y -DCONFIG_ZMK_SLEEP=n
-    artifact-name: corne_right_usb_trackpad_debug

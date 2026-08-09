@@ -4,8 +4,9 @@
  * RDY=D8/P1.04, RST=D9/P1.06.
  *
  * Self-contained copy of the stock corne.dtsi + corne_right.overlay (with
- * col-offset inlined), minus the OLED node, plus the trackpad and its input
- * listener. See TRACKPAD_PLAN.md / TRACKPAD_BRINGUP.md for wiring/bring-up.
+ * col-offset inlined), minus the OLED node, plus the trackpad exposed as an
+ * input-split for the dongle. See TRACKPAD_PLAN.md / TRACKPAD_BRINGUP.md for
+ * wiring/bring-up.
  */
 
 #include <dt-bindings/gpio/gpio.h>
@@ -67,9 +68,21 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)   RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,1
             ;
     };
 
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        tps43_split: tps43_split@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+            device = <&tps43>;
+        };
+    };
+
     tps43_listener: tps43_listener {
         compatible = "zmk,input-listener";
-        device = <&tps43>;
+        status = "disabled";
+        device = <&tps43_split>;
     };
 };
 
