@@ -1,0 +1,3 @@
+# The build workflow fails any board without ZMK compat, and upstream Zephyr boards have no zmk variant.
+config ZMK_BOARD_COMPAT
+    default y if BOARD_RAYTAC_MDBT50Q_DB_40
