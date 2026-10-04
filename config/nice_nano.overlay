@@ -1,0 +1,4 @@
+/* REG0 DC/DC raises idle current on nice!nano v2 and its clones (zmkfirmware/zmk#2990). */
+&reg0 {
+    status = "disabled";
+};
