@@ -67,15 +67,15 @@
 
                 base_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BSPC |
+// |  `   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BSPC |
 // |  ESC | A/G | S/A | D/C | F/S |  G  |   |  H  | J/S | K/C | L/A | ;/G |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | CTRL |
+// |  TAB |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | CTRL |
 //                    | GUI | LWR | SPC |   | ENT | RSE | ALT |
 // GUI double tap toggles the game layer.
                                 bindings = <
-   &kp TAB   &kp Q       &kp W       &kp E        &kp R        &kp T          &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSPC
+   &kp GRAVE &kp Q       &kp W       &kp E        &kp R        &kp T          &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSPC
    &kp ESC   &hml LGUI A &hml LALT S &hml LCTRL D &hml LSHFT F &kp G          &kp H   &hmr RSHFT J &hmr RCTRL K &hmr RALT L &hmr RGUI SEMI &kp SQT
-   &kp LSHFT &kp Z       &kp X       &kp C        &kp V        &kp B          &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RCTRL
+   &kp TAB   &kp Z       &kp X       &kp C        &kp V        &kp B          &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RCTRL
                          &td_game    &mo LOWER    &kp SPACE      &kp RET &mo RAISE &kp RALT
                                 >;
                         };
@@ -110,12 +110,12 @@
 
                         raise_layer {
 // -----------------------------------------------------------------------------------------
-// |  `   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
+// |      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
 // | ESC  |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // |      |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |      |
 //                    |     |     | SPC |   | ENT |     |     |
                                 bindings = <
-   &kp GRAVE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp DEL
+   &trans    &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp DEL
    &kp ESC   &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
    &trans    &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &trans
                       &trans &trans   &kp SPACE            &kp RET   &trans    &trans
