@@ -14,6 +14,11 @@
 #define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
 #define THUMBS 36 37 38 39 40 41
 
+#define GAME 1
+#define LOWER 2
+#define RAISE 3
+#define ADJUST 4
+
 / {
         behaviors {
                 hml: homerow_mods_left {
@@ -39,35 +44,57 @@
                         hold-trigger-key-positions = <KEYS_L THUMBS>;
                         hold-trigger-on-release;
                 };
+
+                td_game: tap_dance_game {
+                        compatible = "zmk,behavior-tap-dance";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <200>;
+                        bindings = <&kp LGUI>, <&tog GAME>;
+                };
         };
 
         conditional_layers {
                 compatible = "zmk,conditional-layers";
 
                 tri_layer {
-                        if-layers = <1 2>;
-                        then-layer = <3>;
+                        if-layers = <LOWER RAISE>;
+                        then-layer = <ADJUST>;
                 };
         };
 
         keymap {
                 compatible = "zmk,keymap";
 
-                layer_0 {
+                base_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BSPC |
 // |  ESC | A/G | S/A | D/C | F/S |  G  |   |  H  | J/S | K/C | L/A | ;/G |  '   |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | CTRL |
 //                    | GUI | LWR | SPC |   | ENT | RSE | ALT |
+// GUI double tap toggles the game layer.
                                 bindings = <
    &kp TAB   &kp Q       &kp W       &kp E        &kp R        &kp T          &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSPC
    &kp ESC   &hml LGUI A &hml LALT S &hml LCTRL D &hml LSHFT F &kp G          &kp H   &hmr RSHFT J &hmr RCTRL K &hmr RALT L &hmr RGUI SEMI &kp SQT
    &kp LSHFT &kp Z       &kp X       &kp C        &kp V        &kp B          &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RCTRL
-                         &kp LGUI    &mo 1        &kp SPACE      &kp RET &mo 2 &kp RALT
+                         &td_game    &mo LOWER    &kp SPACE      &kp RET &mo RAISE &kp RALT
                                 >;
                         };
 
-                        layer_1 {
+                        game_layer {
+// -----------------------------------------------------------------------------------------
+// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+// |      |  A  |  S  |  D  |  F  |     |   |     |  J  |  K  |  L  |  ;  |      |
+// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+//                    |     |     |     |   |     |     |     |
+                                bindings = <
+   &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans   &trans
+   &trans &kp A  &kp S  &kp D  &kp F  &trans   &trans &kp J  &kp K  &kp L  &kp SEMI &trans
+   &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans   &trans
+                 &trans &trans &trans          &trans &trans &trans
+                                >;
+                        };
+
+                        lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  `   |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | DEL  |
 // | ESC  |     |     | PREV| PP  | NEXT|   |     |  UP |     |     |     |      |
@@ -81,7 +108,7 @@
                                 >;
                         };
 
-                        layer_2 {
+                        raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  `   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
 // | ESC  |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -95,7 +122,7 @@
                                 >;
                         };
 
-                        layer_3 {
+                        adjust_layer {
 // -----------------------------------------------------------------------------------------
 // |      |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 |      |
 // |      |     |     |     |     |     |   |     |     |     | F11 | F12 |      |
