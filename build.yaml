@@ -26,8 +26,7 @@ include:
     artifact-name: mdbt50q_dongle
   - board: raytac_mdbt50q_db_40
     shield: corne_dongle
-    snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_STUDIO=n
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DSNIPPET="studio-rpc-usb-uart;zmk-usb-logging"
     artifact-name: mdbt50q_dongle_logging
   - board: nice_nano//zmk
     shield: corne_left
