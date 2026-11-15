@@ -17,6 +17,7 @@
         right { };
     };
 
+    /*
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -31,6 +32,7 @@
         compatible = "zmk,input-listener";
         device = <&tps43_split>;
     };
+    */
 
     mock_kscan: kscan {
         compatible = "zmk,kscan-mock";

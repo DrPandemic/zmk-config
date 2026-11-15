@@ -32,14 +32,14 @@ include:
     shield: corne_left
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: corne_left
-  - board: nice_nano//zmk
-    shield: corne_right_trackpad
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-    artifact-name: corne_right
+  # - board: nice_nano//zmk
+  #   shield: corne_right_trackpad
+  #   cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+  #   artifact-name: corne_right_trackpad
   - board: nice_nano//zmk
     shield: corne_right
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-    artifact-name: corne_right_no_trackpad
+    artifact-name: corne_right
 
   - board: raytac_mdbt50q_db_40
     shield: settings_reset
